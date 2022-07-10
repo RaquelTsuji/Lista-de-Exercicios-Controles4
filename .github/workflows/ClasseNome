@@ -1,0 +1,23 @@
+import java.util.Scanner;
+public class Nome{
+	public static void main (String args[]) throws StringTooLongException{
+		boolean loop = true;
+		Scanner sc = new Scanner (System.in);
+		System.out.print ("Entre com o nome: ");
+		String nome = sc.nextLine();
+		do {
+			try {
+				if (nome.length() <= 10) {
+					System.out.printf("Nome inserido: %s", nome);
+					loop = false;
+				} else {
+					throw new StringTooLongException();
+				}
+			} catch (StringTooLongException input) {
+				System.out.println ("Nome com mais de 10 characteres");
+				System.err.printf ("Exception: %s" ,input);
+				loop = false;
+			}
+		} while (loop);
+	}
+}
